@@ -1,1 +1,30 @@
-<p>list works!</p>
+<div>
+    <h1>Fruit List</h1>
+    <form (ngSubmit)="addFruit()">
+      <div>
+        <input type="text" [(ngModel)]="fruitObj.name" name="name" placeholder="Enter the name"/>
+        <input type="text" [(ngModel)]="fruitObj.price" name="price" placeholder="Enter the price"/>
+      </div>
+      <button type="submit">Add Fruit</button>
+    </form>
+    <table>
+      <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Actions</th>
+          </tr>
+      </thead> 
+      <tbody>
+          <tr *ngFor="let fruit of fruits">
+            <td>{{ fruit.name }}</td>
+            <td>{{ fruit.price }}</td>
+            <td>
+              <button [routerLink]="['/edit', fruit.id]">Edit</button>
+              <button (click)="deleteFruit(fruit.id)">Delete</button>
+            </td>
+          </tr>
+          
+      </tbody> 
+    </table>
+  </div>
